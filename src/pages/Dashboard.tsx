@@ -115,7 +115,7 @@ const Dashboard = () => {
         </div>
 
         {/* Hotel Performance (for super admins) */}
-        {user?.role === 'superadmin' && (
+        {user?.role === 'clientadmin' && (
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center space-x-2">

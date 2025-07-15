@@ -23,11 +23,10 @@ import {
 } from 'lucide-react';
 
 const menuItems = [
-  { title: 'Dashboard', url: '/dashboard', icon: LayoutDashboard, roles: ['superadmin', 'clientadmin', 'entityadmin', 'entityuser'] },
-  { title: 'Employees', url: '/employees', icon: Users, roles: ['superadmin', 'clientadmin', 'entityadmin'] },
-  { title: 'Payroll', url: '/payroll', icon: DollarSign, roles: ['superadmin', 'clientadmin', 'entityadmin'] },
-  { title: 'Reports', url: '/reports', icon: FileText, roles: ['superadmin', 'clientadmin', 'entityadmin'] },
-  { title: 'Settings', url: '/settings', icon: Settings, roles: ['superadmin', 'clientadmin'] },
+  { title: 'Dashboard', url: '/dashboard', icon: LayoutDashboard, roles: ['clientadmin', 'entityadmin', 'entityuser'] },
+  { title: 'Master', url: '/master', icon: Building2, roles: ['clientadmin'] },
+  { title: 'Reports', url: '/reports', icon: FileText, roles: ['clientadmin', 'entityadmin', 'entityuser'] },
+  { title: 'Payroll Management', url: '/payroll', icon: DollarSign, roles: ['clientadmin'] },
 ];
 
 export function AppSidebar() {
@@ -69,33 +68,6 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
 
-        {user?.role === 'superadmin' && (
-          <SidebarGroup>
-            <SidebarGroupLabel>Administration</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                <SidebarMenuItem>
-                  <SidebarMenuButton>
-                    <Building2 className="h-4 w-4" />
-                    {!isCollapsed && <span>Hotels</span>}
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton>
-                    <Clock className="h-4 w-4" />
-                    {!isCollapsed && <span>Attendance</span>}
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton>
-                    <TrendingUp className="h-4 w-4" />
-                    {!isCollapsed && <span>Analytics</span>}
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        )}
       </SidebarContent>
     </Sidebar>
   );

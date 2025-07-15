@@ -25,7 +25,7 @@ export const Header = () => {
             alt="Anant" 
             className="h-8 w-8"
           />
-          <span className="font-semibold text-primary">Anant Hotel Management</span>
+          <span className="font-semibold text-primary">TrackInn</span>
         </div>
       </div>
 

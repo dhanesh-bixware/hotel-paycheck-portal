@@ -5,10 +5,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
-import Employees from "./pages/Employees";
+import Master from "./pages/Master";
 import Payroll from "./pages/Payroll";
 import Reports from "./pages/Reports";
-import Settings from "./pages/Settings";
 
 const queryClient = new QueryClient();
 
@@ -22,10 +21,9 @@ function App() {
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/employees" element={<Employees />} />
+              <Route path="/master" element={<Master />} />
               <Route path="/payroll" element={<Payroll />} />
               <Route path="/reports" element={<Reports />} />
-              <Route path="/settings" element={<Settings />} />
             </Routes>
           </AuthProvider>
         </BrowserRouter>

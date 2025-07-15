@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-type Role = 'superadmin' | 'clientadmin' | 'entityadmin' | 'entityuser';
+type Role = 'clientadmin' | 'entityadmin' | 'entityuser';
 
 interface User {
   id: string;
@@ -44,10 +44,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const login = async (email: string, password: string): Promise<boolean> => {
     // Demo authentication - replace with real authentication
     const demoUsers: User[] = [
-      { id: '1', name: 'John Admin', email: 'admin@anant.com', role: 'superadmin' },
-      { id: '2', name: 'Sarah Manager', email: 'manager@anant.com', role: 'clientadmin', hotelId: '1', hotelName: 'Anant Grand Hotel' },
-      { id: '3', name: 'Mike HR', email: 'hr@anant.com', role: 'entityadmin', hotelId: '1', hotelName: 'Anant Grand Hotel' },
-      { id: '4', name: 'Lisa User', email: 'user@anant.com', role: 'entityuser', hotelId: '1', hotelName: 'Anant Grand Hotel' },
+      { id: '1', name: 'John Admin', email: 'admin@trackinn.com', role: 'clientadmin' },
+      { id: '2', name: 'Sarah Manager', email: 'manager@trackinn.com', role: 'entityadmin', hotelId: '1', hotelName: 'TrackInn Grand Hotel' },
+      { id: '3', name: 'Lisa User', email: 'user@trackinn.com', role: 'entityuser', hotelId: '1', hotelName: 'TrackInn Grand Hotel' },
     ];
 
     const foundUser = demoUsers.find(u => u.email === email);
