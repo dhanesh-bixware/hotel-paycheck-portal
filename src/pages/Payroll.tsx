@@ -1,93 +1,40 @@
-import { useState } from 'react';
+import { useAuth } from '@/contexts/AuthContext';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { 
-  Table, 
-  TableBody, 
-  TableCell, 
-  TableHead, 
-  TableHeader, 
-  TableRow 
-} from '@/components/ui/table';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { 
-  DollarSign, 
-  Calendar, 
-  Clock, 
-  Users, 
-  Download, 
-  Play,
-  CheckCircle,
-  AlertCircle
-} from 'lucide-react';
+import { DollarSign } from 'lucide-react';
 
 const Payroll = () => {
-  const [currentPeriod] = useState('2024-01');
+  const { user } = useAuth();
 
-  const payrollSummary = {
-    totalEmployees: 284,
-    totalGrossPay: 245000,
-    totalDeductions: 49000,
-    totalNetPay: 196000,
-    averageSalary: 4500,
-    overtimeHours: 156,
-    overtimePay: 12400
-  };
-
-  const payrollItems = [
+  const payrollProcesses = [
     {
-      id: '1',
-      employee: 'Sarah Johnson',
-      department: 'Front Desk',
-      baseSalary: 4500,
-      overtimeHours: 8,
-      overtimePay: 300,
-      grossPay: 4800,
-      deductions: 960,
-      netPay: 3840,
-      status: 'Processed',
-      period: '2024-01'
+      companyName: 'CRETE LODGING LLC',
+      startDate: '11-01-2024',
+      endDate: '11-15-2024',
+      totalBusinessSummary: 145000,
+      totalDepartmentAmount: 85000,
+      process: 'Pending',
+      status: 'In Progress'
     },
     {
-      id: '2',
-      employee: 'Mike Chen',
-      department: 'Housekeeping',
-      baseSalary: 3800,
-      overtimeHours: 12,
-      overtimePay: 380,
-      grossPay: 4180,
-      deductions: 836,
-      netPay: 3344,
-      status: 'Processed',
-      period: '2024-01'
+      companyName: 'LNK2 LODGING LLC',
+      startDate: '10-16-2024',
+      endDate: '10-31-2024',
+      totalBusinessSummary: 125000,
+      totalDepartmentAmount: 72000,
+      process: 'Completed',
+      status: 'Processed'
     },
     {
-      id: '3',
-      employee: 'Emily Rodriguez',
-      department: 'Restaurant',
-      baseSalary: 5200,
-      overtimeHours: 6,
-      overtimePay: 390,
-      grossPay: 5590,
-      deductions: 1118,
-      netPay: 4472,
-      status: 'Pending',
-      period: '2024-01'
-    },
-    {
-      id: '4',
-      employee: 'David Kim',
-      department: 'Maintenance',
-      baseSalary: 3500,
-      overtimeHours: 0,
-      overtimePay: 0,
-      grossPay: 3500,
-      deductions: 700,
-      netPay: 2800,
-      status: 'On Hold',
-      period: '2024-01'
+      companyName: 'DMK INVESTMENTS LLC',
+      startDate: '10-01-2024',
+      endDate: '10-15-2024',
+      totalBusinessSummary: 98000,
+      totalDepartmentAmount: 58000,
+      process: 'Completed',
+      status: 'Processed'
     }
   ];
 
@@ -95,12 +42,23 @@ const Payroll = () => {
     switch (status) {
       case 'Processed':
         return <Badge className="bg-green-100 text-green-800 hover:bg-green-100">Processed</Badge>;
+      case 'In Progress':
+        return <Badge className="bg-yellow-100 text-yellow-800 hover:bg-yellow-100">In Progress</Badge>;
       case 'Pending':
-        return <Badge className="bg-yellow-100 text-yellow-800 hover:bg-yellow-100">Pending</Badge>;
-      case 'On Hold':
-        return <Badge variant="outline" className="border-red-200 text-red-800">On Hold</Badge>;
+        return <Badge variant="outline" className="border-orange-200 text-orange-800">Pending</Badge>;
       default:
         return <Badge variant="outline">{status}</Badge>;
+    }
+  };
+
+  const getProcessBadge = (process: string) => {
+    switch (process) {
+      case 'Completed':
+        return <Badge className="bg-green-600 hover:bg-green-700 text-white">Completed</Badge>;
+      case 'Pending':
+        return <Badge className="bg-orange-600 hover:bg-orange-700 text-white">Pending</Badge>;
+      default:
+        return <Badge variant="outline">{process}</Badge>;
     }
   };
 
@@ -109,197 +67,114 @@ const Payroll = () => {
       <div className="space-y-6">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold">Payroll Management</h1>
+            <h1 className="text-3xl font-bold">Payroll Process</h1>
             <p className="text-muted-foreground">
-              Process salaries and manage payroll for all employees.
+              Manage and process payroll for all hotel entities
             </p>
           </div>
-          <div className="flex space-x-2">
-            <Button variant="outline">
-              <Download className="mr-2 h-4 w-4" />
-              Export Report
+          <div className="flex items-center space-x-2">
+            <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+              Process All Payroll
             </Button>
-            <Button>
-              <Play className="mr-2 h-4 w-4" />
-              Process Payroll
+            <Button variant="outline">
+              Export Summary
             </Button>
           </div>
         </div>
 
-        {/* Payroll Summary */}
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        {/* Summary Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total Employees</CardTitle>
-              <Users className="h-4 w-4 text-muted-foreground" />
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm font-medium text-muted-foreground">Total Companies</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{payrollSummary.totalEmployees}</div>
-              <p className="text-xs text-muted-foreground">Active employees</p>
+              <div className="text-2xl font-bold">{payrollProcesses.length}</div>
             </CardContent>
           </Card>
+          
           <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Gross Payroll</CardTitle>
-              <DollarSign className="h-4 w-4 text-muted-foreground" />
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm font-medium text-muted-foreground">Total Business Summary</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">${payrollSummary.totalGrossPay.toLocaleString()}</div>
-              <p className="text-xs text-green-600">+8% from last month</p>
+              <div className="text-2xl font-bold">
+                ${payrollProcesses.reduce((sum, process) => sum + process.totalBusinessSummary, 0).toLocaleString()}
+              </div>
             </CardContent>
           </Card>
+
           <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Net Payroll</CardTitle>
-              <DollarSign className="h-4 w-4 text-muted-foreground" />
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm font-medium text-muted-foreground">Total Department Amount</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">${payrollSummary.totalNetPay.toLocaleString()}</div>
-              <p className="text-xs text-muted-foreground">After deductions</p>
+              <div className="text-2xl font-bold">
+                ${payrollProcesses.reduce((sum, process) => sum + process.totalDepartmentAmount, 0).toLocaleString()}
+              </div>
             </CardContent>
           </Card>
+
           <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Overtime Hours</CardTitle>
-              <Clock className="h-4 w-4 text-muted-foreground" />
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm font-medium text-muted-foreground">Processed</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{payrollSummary.overtimeHours}</div>
-              <p className="text-xs text-orange-600">${payrollSummary.overtimePay.toLocaleString()} overtime pay</p>
+              <div className="text-2xl font-bold">
+                {payrollProcesses.filter(p => p.status === 'Processed').length}
+              </div>
             </CardContent>
           </Card>
         </div>
 
-        <Tabs defaultValue="current" className="space-y-4">
-          <TabsList>
-            <TabsTrigger value="current">Current Period</TabsTrigger>
-            <TabsTrigger value="history">Payroll History</TabsTrigger>
-            <TabsTrigger value="settings">Payroll Settings</TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="current" className="space-y-4">
-            <Card>
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <CardTitle>Payroll Period: January 2024</CardTitle>
-                    <p className="text-sm text-muted-foreground">
-                      Pay period from Jan 1, 2024 to Jan 31, 2024
-                    </p>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <CheckCircle className="h-5 w-5 text-green-600" />
-                    <span className="text-sm font-medium text-green-600">Ready to Process</span>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Employee</TableHead>
-                      <TableHead>Department</TableHead>
-                      <TableHead>Base Salary</TableHead>
-                      <TableHead>OT Hours</TableHead>
-                      <TableHead>OT Pay</TableHead>
-                      <TableHead>Gross Pay</TableHead>
-                      <TableHead>Deductions</TableHead>
-                      <TableHead>Net Pay</TableHead>
-                      <TableHead>Status</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {payrollItems.map((item) => (
-                      <TableRow key={item.id}>
-                        <TableCell className="font-medium">{item.employee}</TableCell>
-                        <TableCell>{item.department}</TableCell>
-                        <TableCell>${item.baseSalary.toLocaleString()}</TableCell>
-                        <TableCell>{item.overtimeHours}h</TableCell>
-                        <TableCell>${item.overtimePay}</TableCell>
-                        <TableCell className="font-medium">${item.grossPay.toLocaleString()}</TableCell>
-                        <TableCell>${item.deductions}</TableCell>
-                        <TableCell className="font-bold">${item.netPay.toLocaleString()}</TableCell>
-                        <TableCell>{getStatusBadge(item.status)}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="history" className="space-y-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>Payroll History</CardTitle>
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center space-x-2">
+              <DollarSign className="h-5 w-5" />
+              <span>Payroll Process Overview</span>
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr className="border-b">
+                    <th className="text-left p-4 font-medium">Company Name</th>
+                    <th className="text-left p-4 font-medium">Start Date</th>
+                    <th className="text-left p-4 font-medium">End Date</th>
+                    <th className="text-left p-4 font-medium">Total Business Summary</th>
+                    <th className="text-left p-4 font-medium">Total Department Amount</th>
+                    <th className="text-left p-4 font-medium">Process</th>
+                    <th className="text-left p-4 font-medium">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {payrollProcesses.map((process, index) => (
+                    <tr key={index} className="border-b hover:bg-muted/50">
+                      <td className="p-4 font-medium">{process.companyName}</td>
+                      <td className="p-4">{process.startDate}</td>
+                      <td className="p-4">{process.endDate}</td>
+                      <td className="p-4">${process.totalBusinessSummary.toLocaleString()}</td>
+                      <td className="p-4">${process.totalDepartmentAmount.toLocaleString()}</td>
+                      <td className="p-4">{getProcessBadge(process.process)}</td>
+                      <td className="p-4">{getStatusBadge(process.status)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            
+            {payrollProcesses.length === 0 && (
+              <div className="text-center py-8">
+                <DollarSign className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                <h3 className="font-medium mb-2">No Payroll Processes</h3>
                 <p className="text-sm text-muted-foreground">
-                  View previous payroll periods and processed payments
+                  Start by creating a new payroll process for your hotels
                 </p>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between p-4 border rounded-lg">
-                    <div>
-                      <h4 className="font-medium">December 2023</h4>
-                      <p className="text-sm text-muted-foreground">Processed on Jan 5, 2024</p>
-                    </div>
-                    <div className="text-right">
-                      <p className="font-bold">$242,000</p>
-                      <Badge className="bg-green-100 text-green-800 hover:bg-green-100">Completed</Badge>
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between p-4 border rounded-lg">
-                    <div>
-                      <h4 className="font-medium">November 2023</h4>
-                      <p className="text-sm text-muted-foreground">Processed on Dec 5, 2023</p>
-                    </div>
-                    <div className="text-right">
-                      <p className="font-bold">$238,500</p>
-                      <Badge className="bg-green-100 text-green-800 hover:bg-green-100">Completed</Badge>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="settings" className="space-y-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>Payroll Configuration</CardTitle>
-                <p className="text-sm text-muted-foreground">
-                  Configure payroll settings and calculation parameters
-                </p>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-6">
-                  <div className="grid gap-4 md:grid-cols-2">
-                    <div className="space-y-2">
-                      <h4 className="font-medium">Pay Period</h4>
-                      <p className="text-sm text-muted-foreground">Monthly (Last day of month)</p>
-                    </div>
-                    <div className="space-y-2">
-                      <h4 className="font-medium">Overtime Rate</h4>
-                      <p className="text-sm text-muted-foreground">1.5x base hourly rate</p>
-                    </div>
-                    <div className="space-y-2">
-                      <h4 className="font-medium">Tax Rate</h4>
-                      <p className="text-sm text-muted-foreground">20% standard deduction</p>
-                    </div>
-                    <div className="space-y-2">
-                      <h4 className="font-medium">Processing Day</h4>
-                      <p className="text-sm text-muted-foreground">5th of each month</p>
-                    </div>
-                  </div>
-                  <Button variant="outline">
-                    <Calendar className="mr-2 h-4 w-4" />
-                    Modify Settings
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
+              </div>
+            )}
+          </CardContent>
+        </Card>
       </div>
     </AppLayout>
   );
