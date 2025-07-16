@@ -175,6 +175,246 @@ const Payroll = () => {
             )}
           </CardContent>
         </Card>
+
+        {/* Departmental Payroll Breakdown */}
+        <div className="grid grid-cols-1 gap-6">
+          {/* Hotel Department */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="bg-pink-200 text-pink-800 p-2 rounded text-center">HOTEL</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-7 gap-0 text-sm">
+                <div className="bg-pink-200 p-2 border font-medium">GM</div>
+                <div className="bg-pink-100 p-2 border text-center">0.03</div>
+                <div className="bg-pink-100 p-2 border"></div>
+                <div className="bg-pink-100 p-2 border"></div>
+                <div className="bg-pink-200 p-2 border text-center font-medium">GM PAYROLL</div>
+                <div className="bg-pink-200 p-2 border text-center">0.00%</div>
+                <div className="bg-pink-200 p-2 border text-center">$ 0.00</div>
+                <div className="bg-pink-200 p-2 border font-medium">TOTAL</div>
+                <div className="bg-pink-100 p-2 border text-center">0.03</div>
+                <div className="bg-pink-100 p-2 border"></div>
+                <div className="bg-pink-100 p-2 border"></div>
+                <div className="bg-pink-200 p-2 border text-center font-medium">HOTEL PAYROLL</div>
+                <div className="bg-pink-200 p-2 border text-center">0.00%</div>
+                <div className="bg-pink-200 p-2 border text-center">$ 0.01</div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Sales Department */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="bg-yellow-400 text-yellow-800 p-2 rounded text-center">SALES</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-7 gap-0 text-sm">
+                <div className="bg-yellow-400 p-2 border font-medium">SALES MANAGER</div>
+                <div className="bg-yellow-100 p-2 border text-center">0.03</div>
+                <div className="bg-yellow-100 p-2 border"></div>
+                <div className="bg-yellow-100 p-2 border"></div>
+                <div className="bg-yellow-400 p-2 border text-center font-medium">SALES PAYROLL</div>
+                <div className="bg-yellow-400 p-2 border text-center">0.00%</div>
+                <div className="bg-yellow-400 p-2 border text-center">$ 0.00</div>
+                <div className="bg-yellow-400 p-2 border font-medium">TOTAL</div>
+                <div className="bg-yellow-100 p-2 border text-center">0.03</div>
+                <div className="bg-yellow-100 p-2 border"></div>
+                <div className="bg-yellow-100 p-2 border"></div>
+                <div className="bg-yellow-400 p-2 border text-center font-medium"></div>
+                <div className="bg-yellow-400 p-2 border text-center"></div>
+                <div className="bg-yellow-400 p-2 border text-center"></div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Front of House Department */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="bg-blue-300 text-blue-800 p-2 rounded text-center">FRONT OF HOUSE</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-7 gap-0 text-sm">
+                <div className="bg-blue-300 p-2 border font-medium">AGM/GEC</div>
+                <div className="bg-blue-100 p-2 border text-center">0.03</div>
+                <div className="bg-blue-100 p-2 border"></div>
+                <div className="bg-blue-100 p-2 border"></div>
+                <div className="bg-blue-300 p-2 border text-center font-medium">FRONT OF HOUSE</div>
+                <div className="bg-blue-300 p-2 border text-center">0.00%</div>
+                <div className="bg-blue-300 p-2 border text-center">$ 0.00</div>
+                <div className="bg-blue-300 p-2 border font-medium">FRONT DESK</div>
+                <div className="bg-blue-100 p-2 border"></div>
+                <div className="bg-blue-100 p-2 border text-center">15.98</div>
+                <div className="bg-blue-100 p-2 border"></div>
+                <div className="bg-blue-300 p-2 border text-center font-medium">PAYROLL</div>
+                <div className="bg-blue-300 p-2 border text-center">0.00%</div>
+                <div className="bg-blue-300 p-2 border text-center">$ 0.00</div>
+                <div className="bg-blue-300 p-2 border font-medium">NIGHT AUDIT</div>
+                <div className="bg-blue-100 p-2 border"></div>
+                <div className="bg-blue-100 p-2 border text-center">8.08</div>
+                <div className="bg-blue-100 p-2 border"></div>
+                <div className="bg-blue-100 p-2 border"></div>
+                <div className="bg-blue-100 p-2 border"></div>
+                <div className="bg-blue-100 p-2 border"></div>
+                <div className="bg-blue-300 p-2 border font-medium">SHUTTLE</div>
+                <div className="bg-blue-100 p-2 border"></div>
+                <div className="bg-blue-100 p-2 border"></div>
+                <div className="bg-blue-100 p-2 border"></div>
+                <div className="bg-blue-100 p-2 border"></div>
+                <div className="bg-blue-100 p-2 border"></div>
+                <div className="bg-blue-100 p-2 border"></div>
+                <div className="bg-blue-300 p-2 border font-medium">TOTAL</div>
+                <div className="bg-blue-100 p-2 border text-center">0.03</div>
+                <div className="bg-blue-100 p-2 border"></div>
+                <div className="bg-blue-100 p-2 border"></div>
+                <div className="bg-blue-100 p-2 border"></div>
+                <div className="bg-blue-100 p-2 border"></div>
+                <div className="bg-blue-100 p-2 border"></div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Food and Beverage Department */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="bg-orange-400 text-orange-800 p-2 rounded text-center">FOOD AND BEVERAGE</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-7 gap-0 text-sm">
+                <div className="bg-orange-400 p-2 border font-medium">F&B DIRECTOR</div>
+                <div className="bg-orange-100 p-2 border text-center">0.03</div>
+                <div className="bg-orange-100 p-2 border"></div>
+                <div className="bg-orange-100 p-2 border"></div>
+                <div className="bg-orange-400 p-2 border text-center font-medium">FOOD AND BEVERAGE</div>
+                <div className="bg-orange-400 p-2 border text-center">0.00%</div>
+                <div className="bg-orange-400 p-2 border text-center">$ 0.00</div>
+                <div className="bg-orange-400 p-2 border font-medium">BARTENDER</div>
+                <div className="bg-orange-100 p-2 border"></div>
+                <div className="bg-orange-100 p-2 border"></div>
+                <div className="bg-orange-100 p-2 border"></div>
+                <div className="bg-orange-400 p-2 border text-center font-medium">PAYROLL</div>
+                <div className="bg-orange-400 p-2 border text-center">0.00%</div>
+                <div className="bg-orange-400 p-2 border text-center">$ 0.00</div>
+                <div className="bg-orange-400 p-2 border font-medium">DISHWASHER/BUSSER</div>
+                <div className="bg-orange-100 p-2 border"></div>
+                <div className="bg-orange-100 p-2 border"></div>
+                <div className="bg-orange-100 p-2 border"></div>
+                <div className="bg-orange-100 p-2 border"></div>
+                <div className="bg-orange-100 p-2 border"></div>
+                <div className="bg-orange-100 p-2 border"></div>
+                <div className="bg-orange-400 p-2 border font-medium">TOTAL</div>
+                <div className="bg-orange-100 p-2 border text-center">0.03</div>
+                <div className="bg-orange-100 p-2 border"></div>
+                <div className="bg-orange-100 p-2 border"></div>
+                <div className="bg-orange-100 p-2 border"></div>
+                <div className="bg-orange-100 p-2 border"></div>
+                <div className="bg-orange-100 p-2 border"></div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Back of House Department */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="bg-purple-300 text-purple-800 p-2 rounded text-center">BACK OF HOUSE</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-7 gap-0 text-sm">
+                <div className="bg-purple-300 p-2 border font-medium">HEAD HOUSEKEEPER</div>
+                <div className="bg-purple-100 p-2 border text-center">0.03</div>
+                <div className="bg-purple-100 p-2 border"></div>
+                <div className="bg-purple-100 p-2 border"></div>
+                <div className="bg-purple-300 p-2 border text-center font-medium">BACK OF HOUSE</div>
+                <div className="bg-purple-300 p-2 border text-center">0.00%</div>
+                <div className="bg-purple-300 p-2 border text-center">$ 0.00</div>
+                <div className="bg-purple-300 p-2 border font-medium">ROOMS 1</div>
+                <div className="bg-purple-100 p-2 border"></div>
+                <div className="bg-purple-100 p-2 border"></div>
+                <div className="bg-purple-100 p-2 border"></div>
+                <div className="bg-purple-300 p-2 border text-center font-medium">PAYROLL</div>
+                <div className="bg-purple-300 p-2 border text-center">0.00%</div>
+                <div className="bg-purple-300 p-2 border text-center">$ 0.00</div>
+                <div className="bg-purple-300 p-2 border font-medium">COMMON AREAS</div>
+                <div className="bg-purple-100 p-2 border"></div>
+                <div className="bg-purple-100 p-2 border text-center">8.75</div>
+                <div className="bg-purple-100 p-2 border"></div>
+                <div className="bg-purple-100 p-2 border"></div>
+                <div className="bg-purple-100 p-2 border"></div>
+                <div className="bg-purple-100 p-2 border"></div>
+                <div className="bg-purple-300 p-2 border font-medium">LAUNDRY ATTENDANT</div>
+                <div className="bg-purple-100 p-2 border"></div>
+                <div className="bg-purple-100 p-2 border text-center">5.68</div>
+                <div className="bg-purple-100 p-2 border"></div>
+                <div className="bg-purple-100 p-2 border"></div>
+                <div className="bg-purple-100 p-2 border"></div>
+                <div className="bg-purple-100 p-2 border"></div>
+                <div className="bg-purple-300 p-2 border font-medium">TOTAL</div>
+                <div className="bg-purple-100 p-2 border text-center">0.03</div>
+                <div className="bg-purple-100 p-2 border"></div>
+                <div className="bg-purple-100 p-2 border"></div>
+                <div className="bg-purple-100 p-2 border"></div>
+                <div className="bg-purple-100 p-2 border"></div>
+                <div className="bg-purple-100 p-2 border"></div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Engineering Department */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="bg-yellow-300 text-yellow-800 p-2 rounded text-center">ENGINEERING</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-7 gap-0 text-sm">
+                <div className="bg-yellow-300 p-2 border font-medium">HEAD ENGINEER</div>
+                <div className="bg-yellow-100 p-2 border text-center">0.33</div>
+                <div className="bg-yellow-100 p-2 border"></div>
+                <div className="bg-yellow-100 p-2 border"></div>
+                <div className="bg-yellow-300 p-2 border text-center font-medium">ENGINEERING PAYROLL</div>
+                <div className="bg-yellow-300 p-2 border text-center">0.00%</div>
+                <div className="bg-yellow-300 p-2 border text-center">$ 0.01</div>
+                <div className="bg-yellow-300 p-2 border font-medium">ATTENDANT</div>
+                <div className="bg-yellow-100 p-2 border"></div>
+                <div className="bg-yellow-100 p-2 border"></div>
+                <div className="bg-yellow-100 p-2 border"></div>
+                <div className="bg-yellow-100 p-2 border"></div>
+                <div className="bg-yellow-100 p-2 border"></div>
+                <div className="bg-yellow-100 p-2 border"></div>
+                <div className="bg-yellow-300 p-2 border font-medium">ENGINEER</div>
+                <div className="bg-yellow-100 p-2 border"></div>
+                <div className="bg-yellow-100 p-2 border text-center">7.85</div>
+                <div className="bg-yellow-100 p-2 border"></div>
+                <div className="bg-yellow-100 p-2 border"></div>
+                <div className="bg-yellow-100 p-2 border"></div>
+                <div className="bg-yellow-100 p-2 border"></div>
+                <div className="bg-yellow-300 p-2 border font-medium">TOTAL</div>
+                <div className="bg-yellow-100 p-2 border text-center">0.33</div>
+                <div className="bg-yellow-100 p-2 border"></div>
+                <div className="bg-yellow-100 p-2 border"></div>
+                <div className="bg-yellow-100 p-2 border"></div>
+                <div className="bg-yellow-100 p-2 border"></div>
+                <div className="bg-yellow-100 p-2 border"></div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Total Payroll Summary */}
+          <Card>
+            <CardContent className="pt-6">
+              <div className="grid grid-cols-3 gap-0 text-sm">
+                <div className="bg-red-500 text-white p-3 border font-medium text-center">TOTAL PAYROLL</div>
+                <div className="bg-red-500 text-white p-3 border text-center">0.50</div>
+                <div className="bg-yellow-400 p-3 border text-center">0.50</div>
+                <div className="bg-red-500 text-white p-3 border font-medium text-center">SALARIED POSITION</div>
+                <div className="bg-yellow-400 p-3 border text-center">0.50</div>
+                <div className="bg-yellow-400 p-3 border text-center"></div>
+                <div className="bg-red-500 text-white p-3 border font-medium text-center">TOTAL NON-SALARY WAGES</div>
+                <div className="bg-yellow-400 p-3 border text-center"></div>
+                <div className="bg-yellow-400 p-3 border text-center"></div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </AppLayout>
   );
