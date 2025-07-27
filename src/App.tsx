@@ -6,6 +6,8 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
 import Master from "./pages/Master";
+import Revenue from "./pages/Revenue";
+import DailyAnalytics from "./pages/DailyAnalytics";
 import Payroll from "./pages/Payroll";
 import Reports from "./pages/Reports";
 
@@ -22,6 +24,8 @@ function App() {
               <Route path="/" element={<Index />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/master" element={<Master />} />
+              <Route path="/revenue" element={<Revenue />} />
+              <Route path="/daily-analytics" element={<DailyAnalytics />} />
               <Route path="/payroll" element={<Payroll />} />
               <Route path="/reports" element={<Reports />} />
             </Routes>

@@ -19,12 +19,15 @@ import {
   Settings,
   Building2,
   Clock,
-  TrendingUp 
+  TrendingUp,
+  BarChart3
 } from 'lucide-react';
 
 const menuItems = [
   { title: 'Dashboard', url: '/dashboard', icon: LayoutDashboard, roles: ['clientadmin', 'entityadmin', 'entityuser'] },
   { title: 'Master', url: '/master', icon: Building2, roles: ['clientadmin'] },
+  { title: 'Revenue', url: '/revenue', icon: TrendingUp, roles: ['clientadmin', 'entityadmin', 'entityuser'] },
+  { title: 'Daily Analytics', url: '/daily-analytics', icon: BarChart3, roles: ['clientadmin', 'entityadmin', 'entityuser'] },
   { title: 'Reports', url: '/reports', icon: FileText, roles: ['clientadmin', 'entityadmin', 'entityuser'] },
   { title: 'Payroll Management', url: '/payroll', icon: DollarSign, roles: ['clientadmin'] },
 ];
